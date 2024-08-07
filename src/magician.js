@@ -1,7 +1,7 @@
 import Character from "./character";
 
 export default class Magician extends Character {
-    constructor(defaultAttack) {
-        super(defaultAttack);
+    constructor() {
+        super();
     }
 }

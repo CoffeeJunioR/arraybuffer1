@@ -1,24 +1,33 @@
 export default class Character {
-    constructor(defaultAttack) {
-        this.defaultAttack = defaultAttack;
+    constructor() {
         this.stoned = false;
     }
 
-    getAttack(distance) {
-        let attack = this.defaultAttack * (1 - (distance - 1) * 0.1);
+    setAttack(attackValue) {
+        this.defaultAttack = attackValue;
+    };
 
+    getAttack() {
+        let attackWithDistance = this.calculateAttackWithDistance(this.distance);
         if (this.stoned) {
-            attack -= Math.log2(distance) * 5;
-        };
-
-        return attack;
-    }
+          attackWithDistance -= Math.log2(this.distance) * 5;
+        }
+        return attackWithDistance;
+    };
 
     setStoned() {
         this.stoned = true;
-    }
+    };
 
     getStoned() {
         return this.stoned;
-    }
+    };
+
+    calculateAttackWithDistance(distance) {
+        return Math.max(0, this.defaultAttack * (1 - distance * 0.1)); 
+    };
+    
+      setDistance(distance) {
+        this.distance = distance;
+    };
 }
