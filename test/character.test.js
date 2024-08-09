@@ -1,9 +1,9 @@
 import Character from "../src/character";
 
 test('Проверка создания класса Character', () => {
-    const character = new Character(40);
+    const character = new Character();
     const expectedCharacter = {
-        stoned: false
+        _stoned: false
     }
     expect(character).toEqual(expectedCharacter);
 });
@@ -11,25 +11,26 @@ test('Проверка создания класса Character', () => {
 
 test('Проверка getAttack, если stoned = false', () => {
     const character = new Character();
-    character.setAttack(40);
-    character.setDistance(3);
+    character.attack = 40;
+    character.distance = 3;
     const expectedAttack = 28;
-    expect(character.getAttack()).toBe(expectedAttack);
+    expect(character.attack).toBe(expectedAttack);
 })
 
 test('Проверка getAttack, если stoned = true', () => {
     const character = new Character();
-    character.setStoned()
-    character.setAttack(40);
-    character.setDistance(2);
+    character.stoned = true;
+    character.attack = 40;
+    character.distance = 2;
     const expectedAttack = 27;
-    expect(character.getAttack(2)).toBe(expectedAttack);
+    expect(character.attack).toBe(expectedAttack);
 })
 
 test('Проверка getStoned', () => {
     const character = new Character();
     const expectedCharacter = {
-        stoned: false
+        _stoned: true
     }
-    expect(character.getStoned()).toBe(expectedCharacter.stoned)
+    character.stoned = true;
+    expect(character.stoned).toBe(expectedCharacter._stoned)
 })
